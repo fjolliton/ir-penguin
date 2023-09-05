@@ -87,6 +87,20 @@ def make_pinguino_command(*, on=True, mode=1, speed=1, temp=20):
 
 def main():
     ns = parser.parse_args()
+
+    # Summary
+    mode_name = (
+        "Fan only"
+        if ns.mode == 1
+        else "Dehumidifier"
+        if ns.mode == 2
+        else "Air Conditioner"
+    )
+    fan_speed_name = "low" if ns.speed == 1 else "medium" if ns.speed == 2 else "high"
+    print(f"Operating Mode: {mode_name}")
+    print(f"Fan Speed:      {ns.speed} ({fan_speed_name})")
+    print(f"Target Temp:    {ns.temp}°C")
+
     cmd = make_pinguino_command(
         on=not ns.off, mode=ns.mode, speed=ns.speed, temp=ns.temp
     )
