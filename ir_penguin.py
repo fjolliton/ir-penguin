@@ -37,7 +37,7 @@ parser.add_argument(
     "-t",
     "--temp",
     type=int_interval("temp", 16, 32),
-    default=20,
+    default=21,
     help="Temperature in Celsius (16C to 32C)",
 )
 
